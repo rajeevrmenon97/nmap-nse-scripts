@@ -34,9 +34,12 @@ function parseXML(dom)
 	local info = {}
 	info['ServerType '] = getTag(dom,"SPN")
 	info['ProductID  '] = getTag(dom,"PRODUCTID")
-	info['UUID       '] = getTag(dom,"cUUID")
+	info['UUID       '] = getTag(dom,"UUID")
+	info['cUUID      '] = getTag(dom,"cUUID")
 	info['ILOType    '] = getTag(dom,"PN")
-   	info['ILOFirmware'] = getTag(dom,"FWRI")
+  info['ILOFirmware'] = getTag(dom,"FWRI")
+	info['Serial No  '] = getTag(dom,"SN")
+
 	for key,_ in pairs(info) do
 		if info[key] ~= nil then
 			table.insert(response,tostring(key).." : "..info[key].kids[1].value)
