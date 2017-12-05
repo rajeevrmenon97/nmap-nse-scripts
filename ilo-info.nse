@@ -7,6 +7,34 @@ MAC addresses, IP addresses etc. This script uses the slaxml library
 to parse the iLO xml file and display the info.
 ]]
 
+---
+--@usage
+--nmap --script ilo-info -p 80 <host>
+--
+--@output
+--PORT   STATE SERVICE
+--80/tcp open  http
+--| ilo-info:
+--|   ILOType     : Integrated Lights-Out 4 (iLO 4)
+--|   Serial No   : ILOXXXXXXXXXX
+--|   ILOFirmware : X.XX
+--|   UUID        : XXXXXXXXXXXXXXXX
+--|   cUUID       : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX
+--|   ServerType  : ProLiant MicroServer Gen8
+--|   ProductID   : XXXXXX-XXX
+--|   NICs:
+--|     NIC 1:
+--|       Mac Address : 12:34:56:78:9a:bc
+--|       Description : iLO 4
+--|       IP Address  : 10.10.10.10
+--|       Status      : OK
+--|     NIC 2:
+--|       Mac Address : 11:22:33:44:55:66
+--|       Description : iLO 4
+--|       IP Address  : Unknown
+--|_      Status      : Disabled
+---
+
 author = "Rajeev R Menon"
 license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
 categories = {"safe","discovery"}
