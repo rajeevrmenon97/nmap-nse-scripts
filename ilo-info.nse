@@ -1,10 +1,15 @@
 description = [[
-Blah Blah
+Extracts information about HP iLO boards.
+
+HP iLO boards have an unauthenticated info disclosure at <ip>/xmldata?item=all.
+It lists board informations such as server model, firmware version, 
+MAC addresses, IP addresses etc. This script uses the slaxml library
+to parse the iLO xml file and display the info.
 ]]
 
 author = "Rajeev R Menon"
 license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
-categories = {"safe","discovery","default"}
+categories = {"safe","discovery"}
 
 local http = require "http"
 local slaxml = require "slaxml"
@@ -37,7 +42,7 @@ function parseXML(dom)
 	info['UUID       '] = getTag(dom,"UUID")
 	info['cUUID      '] = getTag(dom,"cUUID")
 	info['ILOType    '] = getTag(dom,"PN")
-  info['ILOFirmware'] = getTag(dom,"FWRI")
+  	info['ILOFirmware'] = getTag(dom,"FWRI")
 	info['Serial No  '] = getTag(dom,"SN")
 
 	for key,_ in pairs(info) do
